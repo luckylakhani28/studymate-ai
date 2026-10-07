@@ -1,0 +1,36 @@
+# Render Blueprint: API (also serves the React app) + background worker, both from the Dockerfile.
+# Starting point: check field names against Render's Blueprint docs before relying on it.
+envVarGroups:
+  - name: studymate-shared
+    envVars:
+      - key: MONGODB_URI
+        sync: false # set in the dashboard: your Atlas connection string
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: STORAGE_DRIVER
+        value: gridfs # Render disks are ephemeral; PDFs live in MongoDB
+      - key: VECTOR_SEARCH_MODE
+        value: atlas
+      - key: CLIENT_ORIGIN
+        sync: false # e.g. https://studymate-api.onrender.com
+
+services:
+  - type: web
+    name: studymate-api
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - fromGroup: studymate-shared
+
+  - type: worker
+    name: studymate-worker
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerCommand: node --max-old-space-size=1024 src/worker.js
+    envVars:
+      - fromGroup: studymate-shared

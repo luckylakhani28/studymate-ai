@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+package-lock.json
+playwright-report
+test-results
+server/storage
+server/.model-cache
+server/.ocr-cache

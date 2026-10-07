@@ -1,0 +1,35 @@
+{
+  "name": "studymate-ai",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,worker,client -c blue,magenta,green \"npm:dev:server\" \"npm:dev:worker\" \"npm:dev:client\"",
+    "dev:server": "npm run dev -w server",
+    "dev:worker": "npm run dev:worker -w server",
+    "dev:client": "npm run dev -w client",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test -w server && npm run test -w client",
+    "test:e2e": "playwright test -c e2e/playwright.config.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@playwright/test": "^1.53.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "pdf-lib": "^1.17.1",
+    "prettier": "^3.6.0"
+  }
+}

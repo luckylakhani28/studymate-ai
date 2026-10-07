@@ -1,0 +1,21 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+
+# env files (examples are committed)
+.env
+.env.*
+!.env.example
+
+# local data and caches
+server/storage/
+server/.model-cache/
+server/.ocr-cache/
+server/.e2e-storage/
+
+# test output
+e2e/.fixtures/
+playwright-report/
+test-results/
