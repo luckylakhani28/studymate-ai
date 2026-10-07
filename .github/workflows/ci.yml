@@ -37,7 +37,7 @@ jobs:
           key: test-binaries-${{ runner.os }}-v1
       - run: npm ci
       - run: npm run test:coverage -w server
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with: { name: server-coverage, path: server/coverage }
 
@@ -71,6 +71,6 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: failure()
         with: { name: playwright-report, path: playwright-report }
