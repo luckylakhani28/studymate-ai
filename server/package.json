@@ -23,13 +23,13 @@
     "usage:report": "node --env-file-if-exists=.env src/scripts/usageReport.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.131.0",
+    "@anthropic-ai/sdk": "^0.133.0",
     "@huggingface/transformers": "^3.6.0",
     "@napi-rs/canvas": "^0.1.74",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^5.3.0",
     "express-rate-limit": "^8.0.0",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
@@ -40,7 +40,7 @@
     "pino": "^9.7.0",
     "pino-http": "^10.5.0",
     "tesseract.js": "^6.0.1",
-    "zod": "^4.0.0"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.0",
